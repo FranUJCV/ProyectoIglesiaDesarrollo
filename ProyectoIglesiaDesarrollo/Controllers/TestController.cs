@@ -2,7 +2,7 @@
 
 namespace ProyectoIglesiaDesarrollo.Controllers
 {
-    public class HomeController1 : Controller
+    public class TestController : Controller
     {
         public IActionResult Index()
         {
