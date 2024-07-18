@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using ProyectoIglesiaDesarrollo.Models;
 using ProyectoIglesiaDesarrollo.Models.Domain;
 using ProyectoIglesiaDesarrollo.Models.Domain.Entidades;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ProyectoIglesiaDesarrollo.Controllers
@@ -43,7 +45,7 @@ namespace ProyectoIglesiaDesarrollo.Controllers
                 return View(new UsuarioVm());
             }
 
-            var modulosroles = _context.modulosRoles
+            var modulosroles = _context.ModulosRoles
                                        .Where(w => w.Eliminado == false && w.RolId == user.Rol.Id)
                                        .ProjectToType<ModulosRoles>()
                                        .ToList();
@@ -73,6 +75,16 @@ namespace ProyectoIglesiaDesarrollo.Controllers
             HttpContext.Session.SetString("UsuarioObjeto", sesionbase64);
 
             return View();
+        }
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = MD5CryptoServiceProvider.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = md5.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
         }
     }
 }
