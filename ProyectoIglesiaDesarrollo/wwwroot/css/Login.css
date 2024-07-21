@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.row-6 {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    padding: 20px;
+}
+
+.login .insert {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .login .insert center {
+        margin-bottom: 20px;
+    }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+    form div {
+        margin-bottom: 15px;
+    }
+
+label.control-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+span.text-danger {
+    color: red;
+    font-size: 0.9em;
+}
+
+.sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.submit input {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+    .submit input:hover {
+        background-color: #0056b3;
+    }
+
+.clear {
+    clear: both;
+}
