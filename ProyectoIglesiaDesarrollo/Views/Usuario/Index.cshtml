@@ -1,0 +1,46 @@
+﻿@model UsuarioVm
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+<div class="row-6">
+    @if (!string.IsNullOrEmpty(@ViewBag.Error))
+    {
+        <div class="@ViewBag.ClaseMensaje" role="alert" id="success-alert">
+            <strong>@ViewBag.Error</strong>
+        </div>
+    }
+    <div class="main">
+        <div class="login">
+            <div class="insert">
+                <!------start-main----->
+                <center>
+                    @*<img src="~/Imagenes/Logo.png" alt="LogoEndodent" height="150">*@
+
+                </center>
+                <form method="post" asp-action="Index">
+                    <div>
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password" class="control-label"></label>
+                        <input type="Password" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="sign">
+                        <div class="submit">
+                            <input type="submit" value="Iniciar Sesión">
+                        </div>
+                        <div class="clear"><br /><br /></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!------end-main----->
+    </div>
+</div>
+
