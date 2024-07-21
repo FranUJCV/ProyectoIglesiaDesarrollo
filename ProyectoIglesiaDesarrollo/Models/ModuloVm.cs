@@ -6,6 +6,6 @@
         public string Nombre { get; set; }
         public string Metodo { get; set; }
         public string Controller { get; set; }
-        public Guid AgrupadoModulosId { get; set; }
+        public Guid AgrupadoModuloId { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace ProyectoIglesiaDesarrollo.Controllers
 
             var modulosroles = _context.ModulosRoles
                                        .Where(w => w.Eliminado == false && w.RolId == user.Rol.Id)
-                                       .ProjectToType<ModulosRoles>()
+                                       .ProjectToType<ModulosRolesVm>()
                                        .ToList();
 
             var agrupadosid = modulosroles.Select(s => s.Modulo.AgrupadoModuloId).Distinct().ToList();
