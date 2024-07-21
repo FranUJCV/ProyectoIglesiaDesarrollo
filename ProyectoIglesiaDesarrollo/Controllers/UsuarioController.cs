@@ -75,7 +75,7 @@ namespace ProyectoIglesiaDesarrollo.Controllers
             var sesionbase64 = Convert.ToBase64String(plainTextBytes);
             HttpContext.Session.SetString("UsuarioObjeto", sesionbase64);
 
-            return View();
+            return RedirectToAction("Index","Home");
         }
         public static string GetMD5(string str)
         {

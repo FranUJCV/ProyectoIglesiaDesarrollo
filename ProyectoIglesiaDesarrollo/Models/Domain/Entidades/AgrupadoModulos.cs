@@ -4,7 +4,6 @@
     {
         public Guid Id { get; set; }
         public string Descripcion { get; set; }
-        public string Controller { get; set; }
         public bool Eliminado { get; set; }
         public DateTime FechaCreacion { get; set; }
         public Guid UsuarioId { get; set; }
