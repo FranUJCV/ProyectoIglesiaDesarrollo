@@ -10,16 +10,59 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         {
             public void Configure(EntityTypeBuilder<AgrupadoModulos> builder)
             {
-                builder.HasKey(x => x.Id);
-                builder.HasMany(x => x.Modulos).WithOne(a => a.AgrupadoModulos).HasForeignKey(x => x.AgrupadoModulos);
+                builder.HasKey(am => am.Id);
+
+                builder.Property(am => am.Descripcion)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(am => am.Eliminado)
+                       .IsRequired();
+
+                builder.Property(am => am.FechaCreacion)
+                       .IsRequired();
+
+                builder.Property(am => am.UsuarioId)
+                       .IsRequired();
+
+                builder.HasMany(am => am.Modulos)
+                       .WithOne(m => m.AgrupadoModulos)
+                       .HasForeignKey(m => m.AgrupadoModulosId);
             }
         }
         public class ModuloConfig : IEntityTypeConfiguration<Modulo>
         {
             public void Configure(EntityTypeBuilder<Modulo> builder)
             {
-                builder.HasKey(x => x.Id);
-                builder.HasMany(x => x.ModulosRoles).WithOne(a => a.Modulo).HasForeignKey(x => x.ModuloId);
+                builder.HasKey(m => m.Id);
+
+                builder.Property(m => m.Nombre)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Metodo)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Controller)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+
+                builder.Property(m => m.UsuarioId)
+                       .IsRequired();
+
+                builder.Property(m => m.AgrupadoModulosId)
+                       .IsRequired();
+
+                builder.HasOne(m => m.AgrupadoModulos)
+                       .WithMany(am => am.Modulos)
+                       .HasForeignKey(m => m.AgrupadoModulosId);
             }
         }
         public class RolConfig : IEntityTypeConfiguration<Rol>

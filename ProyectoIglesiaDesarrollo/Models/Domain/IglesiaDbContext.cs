@@ -7,11 +7,13 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
     public class IglesiaDbContext : DbContext
     {
         public IglesiaDbContext(DbContextOptions<IglesiaDbContext> options) : base(options) { }
+
         public DbSet<AgrupadoModulos> AgrupadoModulos { get; set; }
-        public DbSet<Modulo> Modulo {  get; set; }
+        public DbSet<Modulo> Modulo { get; set; }
         public DbSet<Rol> Rol { get; set; }
         public DbSet<ModulosRoles> ModulosRoles { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AgrupadoModulosConfig());
@@ -20,6 +22,6 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new ModulosRolesConfig());
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
         }
-
     }
 }
+

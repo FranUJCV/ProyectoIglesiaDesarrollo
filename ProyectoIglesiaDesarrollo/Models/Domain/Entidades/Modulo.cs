@@ -11,9 +11,13 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain.Entidades
         public bool Eliminado { get; set; }
         public DateTime FechaCreacion { get; set; }
         public Guid UsuarioId { get; set; }
-        public Guid AgrupadoModuloId { get; set; }
+
+        public Guid AgrupadoModulosId { get; set; }
+
         public AgrupadoModulos AgrupadoModulos { get; set; }
+
         public ICollection<ModulosRoles> ModulosRoles { get; set; }
+
         public Modulo()
         {
             ModulosRoles = new HashSet<ModulosRoles>();
