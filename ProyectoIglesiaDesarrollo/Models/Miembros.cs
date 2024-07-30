@@ -51,10 +51,5 @@ namespace ProyectoIglesiaDesarrollo.Models
         [Column(TypeName = "nvarchar(100)")]
         [DisplayName("Image Name")]
         public string? ImageName { get; set; }
-
-        [NotMapped]
-        [DisplayName("Subir Imagen")]
-        public IFormFile? ImageFile { get; set; }
-        public object? Id { get; internal set; }
     }
 }

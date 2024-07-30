@@ -65,14 +65,6 @@ namespace ProyectoIglesiaDesarrollo.Controllers
 
                     //guardar imagen en wwwroot/image
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Path.GetFileNameWithoutExtension(miembros.ImageFile.FileName);
-                    string extension = Path.GetExtension(miembros.ImageFile.FileName);
-                    miembros.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        await miembros.ImageFile.CopyToAsync(fileStream);
-                    }
                     _context.Add(miembros);
                 }
                 else
