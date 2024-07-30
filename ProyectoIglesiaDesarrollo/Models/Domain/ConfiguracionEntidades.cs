@@ -27,7 +27,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
 
                 builder.HasMany(am => am.Modulos)
                        .WithOne(m => m.AgrupadoModulos)
-                       .HasForeignKey(m => m.AgrupadoModulosId);
+                       .HasForeignKey(m => m.AgrupadoModuloId);
             }
         }
         public class ModuloConfig : IEntityTypeConfiguration<Modulo>
@@ -57,12 +57,12 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.Property(m => m.UsuarioId)
                        .IsRequired();
 
-                builder.Property(m => m.AgrupadoModulosId)
+                builder.Property(m => m.AgrupadoModuloId)
                        .IsRequired();
 
                 builder.HasOne(m => m.AgrupadoModulos)
                        .WithMany(am => am.Modulos)
-                       .HasForeignKey(m => m.AgrupadoModulosId);
+                       .HasForeignKey(m => m.AgrupadoModuloId);
             }
         }
         public class RolConfig : IEntityTypeConfiguration<Rol>
