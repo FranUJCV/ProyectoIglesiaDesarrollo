@@ -48,8 +48,5 @@ namespace ProyectoIglesiaDesarrollo.Models
         [DisplayName("Rol")]
         public String? Rol { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        [DisplayName("Image Name")]
-        public string? ImageName { get; set; }
     }
 }
