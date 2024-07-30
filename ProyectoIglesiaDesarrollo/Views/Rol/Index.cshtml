@@ -1,0 +1,63 @@
+﻿@model List<RolVm>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoIglesiaDesarrollo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoIglesiaDesarrollo.styles.css" asp-append-version="true" />
+    <link href="~/css/rolindex.css" rel="stylesheet" />
+</head>
+<form asp-action="Insertar" method="get">
+    <div class="row">
+        <div class="danger">
+            @if (TempData["mensaje"] != null)
+            {
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <p>@TempData["mensaje"]</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Agregar" class="btn-success">
+    </div>
+    @if (Model.Count > 0)
+    {
+        <div class="ScrollB">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>                      
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Descripcion</td>                       
+                            <td>
+                                @Html.ActionLink("Editar", "Editar", "Roles", new { @RolId = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Eliminar", "Eliminar", "Roles", new { @RolId = item.Id }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+    }
+    else
+    {
+        <p>No hay Roles </p>
+    }
+</form>
+
