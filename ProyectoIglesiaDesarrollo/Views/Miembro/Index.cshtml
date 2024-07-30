@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ProyectoIglesiaDesarrollo.Models.Miembros>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+
+    <div class="col-md-12">
+        @* offset-md-1">*@
+        <br>
+        <h1>Miembros</h1>
+
+        
+        
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombres)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Apellidos)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FNacimiento)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Edad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Genero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rol)
+                    </th>
+                    <th>
+                        <a asp-action="AddOrEdit" class="btn btn-sm btn-success" style="width:92px !important">
+                            <i class="fa-solid fa-plus"></i>
+                            Nuevo
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apellidos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FNacimiento)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Edad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Genero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rol)
+                        </td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@item.MiembroId">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="AddOrEdit" asp-route-id="@item.MiembroId" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <a asp-action="Details" asp-route-id="@item.MiembroId" class="btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Estas Seguro(a)?,que quieres Eliminar a este miembro')">
+                                        <i class="far fa-trash-alt"> </i>
+                                    </button>
+                                </div>
+
+
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
