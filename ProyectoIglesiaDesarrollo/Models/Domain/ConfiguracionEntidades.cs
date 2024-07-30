@@ -92,7 +92,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         {
             public void Configure(EntityTypeBuilder<Miembros> builder)
             {
-                builder.HasKey(x => x.Id);
+                builder.HasKey(x => x.MiembroId);
             }
         }
     }
