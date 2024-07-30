@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProyectoIglesiaDesarrollo.styles.css" asp-append-version="true" />
-    <link href="~/css/rolindex.css" rel="stylesheet" />
+    <link href="~/css/rol/rolindex.css" rel="stylesheet" />
 </head>
 <form asp-action="Insertar" method="get">
     <div class="row">
@@ -45,8 +45,8 @@
                         <tr>
                             <td>@item.Descripcion</td>                       
                             <td>
-                                @Html.ActionLink("Editar", "Editar", "Roles", new { @RolId = item.Id }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Eliminar", "Eliminar", "Roles", new { @RolId = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Editar", "Editar", "Rol", new { @RolId = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Eliminar", "Eliminar", "Rol", new { @RolId = item.Id }, new { @class = "btn btn-info" })
                             </td>
                         </tr>
                     }
