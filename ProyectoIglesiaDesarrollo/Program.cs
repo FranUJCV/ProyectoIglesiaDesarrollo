@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ProyectoIglesiaDesarrollo.Models.Domain;
 
@@ -44,3 +45,22 @@ app.MapControllerRoute(
 app.UseStaticFiles();
 app.MapDefaultControllerRoute();
 app.Run();
+
+
+namespace ProyectoIglesiaDesarrollo
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Program>();
+                });
+    }
+}
