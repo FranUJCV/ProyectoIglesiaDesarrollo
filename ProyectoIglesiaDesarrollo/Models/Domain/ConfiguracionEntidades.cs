@@ -72,6 +72,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.HasKey(x => x.Id);
                 builder.HasMany(x => x.ModulosRoles).WithOne(a => a.Rol).HasForeignKey(x => x.RolId);
                 builder.HasMany(x => x.Usuarios).WithOne(a => a.Rol).HasForeignKey(x => x.RolId);
+                builder.HasMany(x => x.Miembro).WithOne(a => a.Rol).HasForeignKey(x => x.RolId);
             }
         }
         public class UsuarioConfig : IEntityTypeConfiguration<Usuario>
@@ -93,6 +94,41 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             public void Configure(EntityTypeBuilder<Miembros> builder)
             {
                 builder.HasKey(x => x.MiembroId);
+
+                builder.Property(m => m.Nombre)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Apellido)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+
+                builder.Property(m => m.Edad).HasColumnType("int").HasColumnName("Edad")
+                       .IsRequired();
+            }
+        }
+        public class GenerosConfig : IEntityTypeConfiguration<Generos>
+        {
+            public void Configure(EntityTypeBuilder<Generos> builder)
+            {
+                builder.HasKey(x => x.Id);
+
+                builder.Property(m => m.Genero)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+                builder.HasMany(x => x.Miembro).WithOne(a => a.Generos).HasForeignKey(x => x.GeneroId);
             }
         }
     }

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore;
+﻿using Mapster;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProyectoIglesiaDesarrollo.Models;
 using ProyectoIglesiaDesarrollo.Models.Domain;
+using ProyectoIglesiaDesarrollo.Models.Domain.Entidades;
 using System.Diagnostics.Metrics;
 
 
@@ -11,154 +13,195 @@ namespace ProyectoIglesiaDesarrollo.Controllers
 {
     public class MiembroController : Controller
     {
-        private readonly IglesiaDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
-
-        public MiembroController(IglesiaDbContext context, IWebHostEnvironment hostEnvironment)
+        private IglesiaDbContext _context;
+        public MiembroController(IglesiaDbContext context)
         {
             _context = context;
-            this._hostEnvironment = hostEnvironment;
         }
-
-        // GET: Miembros
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Miembros.ToListAsync());
-        }
-
-        // GET: Miembros/Details
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var miembros = await _context.Miembros
-                .FirstOrDefaultAsync(m => m.MiembroId == id);
-            if (miembros == null)
-            {
-                return NotFound();
-            }
-
+            var miembros = _context.Miembros.Where(w => w.Eliminado == false).ProjectToType<MiembrosVm>().ToList();
             return View(miembros);
-        }
 
-        // GET: Miembross/Agregar
-        public IActionResult AddOrEdit(int Id = 0)
+        }
+        [HttpGet]
+        public IActionResult Insertar()
         {
-            if (Id == 0)
-                return View(new Miembros());
-            else
-                return View(_context.Miembros.Find(Id));
-        }
+            var roles = _context.Rol.Where(w => w.Eliminado == false).ProjectToType<RolVm>().ToList();
+            var itemsroles = roles.ConvertAll(d =>
+            {
+                return new SelectListItem
+                {
+                    Text = d.Descripcion,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
 
-        // POST: Miembros/Agregar
+            });
+            var generos = _context.Generos.Where(w => w.Eliminado == false).ProjectToType<GenerosVm>().ToList();
+            var itemsgeneros = generos.ConvertAll(d =>
+            {
+                return new SelectListItem
+                {
+                    Text = d.Genero,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
+
+            });
+            var nuevomiembro = new MiembrosVm
+            {
+                Roles = itemsroles,
+                Genero = itemsgeneros,
+            };
+            return View(nuevomiembro);
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MiembroId,Nombres,Apellidos,Fecha de Nacimiento,Edad,Genero,Direccion,Rol,ImageFile")] Miembros miembros)
+        public IActionResult Insertar(MiembrosVm vm)
         {
-            if (ModelState.IsValid)
+            var roles = _context.Rol.Where(w => w.Eliminado == false).ProjectToType<RolVm>().ToList();
+            var itemsroles = roles.ConvertAll(d =>
             {
-                if (miembros.MiembroId == 0)
+                return new SelectListItem
                 {
+                    Text = d.Descripcion,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
 
-                    //guardar imagen en wwwroot/image
-                    string wwwRootPath = _hostEnvironment.WebRootPath;
-                    _context.Add(miembros);
-                }
-                else
+            });
+            var generos = _context.Generos.Where(w => w.Eliminado == false).ProjectToType<GenerosVm>().ToList();
+            var itemsgeneros = generos.ConvertAll(d =>
+            {
+                return new SelectListItem
                 {
-                    _context.Update(miembros);
+                    Text = d.Genero,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
 
-                }
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(miembros);
+            });
+
+            Miembros nuevomiembro = new Miembros();
+            nuevomiembro.Nombre = vm.Nombre;
+            nuevomiembro.Apellido = vm.Apellido;
+            nuevomiembro.Edad = vm.Edad;
+            nuevomiembro.Direccion = vm.Direccion;
+            nuevomiembro.Eliminado = false;
+            nuevomiembro.FechaCreacion = DateTime.Now;
+            nuevomiembro.GeneroId = vm.GeneroId;
+            nuevomiembro.RolId = vm.RolId;
+            nuevomiembro.MiembroId = Guid.NewGuid();
+            _context.Miembros.Add(nuevomiembro);
+            _context.SaveChanges();
+
+
+            TempData["mensaje"] = "Miembro Agregado Correctamente";
+            return RedirectToAction("Index");
         }
-        // GET: Miembross/Editar
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+        public IActionResult Editar(Guid MiembrosId)
         {
-            if (id == null)
+            var miembro = _context.Miembros.Where(w => w.Eliminado == false && w.MiembroId == MiembrosId).ProjectToType<MiembrosVm>().FirstOrDefault();
+            var roles = _context.Rol.Where(w => w.Eliminado == false).ProjectToType<RolVm>().ToList();
+            var itemsroles = roles.ConvertAll(d =>
             {
-                return NotFound();
-            }
+                return new SelectListItem
+                {
+                    Text = d.Descripcion,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
 
-            var miembros = await _context.Miembros.FindAsync(id);
-            if (miembros == null)
+            });
+            var generos = _context.Generos.Where(w => w.Eliminado == false).ProjectToType<GenerosVm>().ToList();
+            var itemsgeneros = generos.ConvertAll(d =>
             {
-                return NotFound();
-            }
-            return View(miembros);
+                return new SelectListItem
+                {
+                    Text = d.Genero,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
+
+            });
+
+
+            miembro.Roles = itemsroles;
+            miembro.Genero = itemsgeneros;
+           
+
+            return View(miembro);
         }
-
-        // POST: Miembros/Editar
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MiembroId,Nombres,Apellidos,Fecha de Nacimiento,Edad,Genero,Direccion,Rol,ImageFile")] Miembros miembros)
+        public IActionResult Editar(MiembrosVm vm)
         {
-            if (id != miembros.MiembroId)
+            var miembros = _context.Miembros.Where(w => w.Eliminado == false && w.MiembroId == vm.MiembroId).FirstOrDefault();
+            var roles = _context.Rol.Where(w => w.Eliminado == false).ProjectToType<RolVm>().ToList();
+            var itemsroles = roles.ConvertAll(d =>
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                return new SelectListItem
                 {
-                    _context.Update(miembros);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
+                    Text = d.Descripcion,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
+
+            });
+            var generos = _context.Generos.Where(w => w.Eliminado == false).ProjectToType<GenerosVm>().ToList();
+            var itemsgeneros = generos.ConvertAll(d =>
+            {
+                return new SelectListItem
                 {
-                    if (!MiembroExists(miembros.MiembroId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(miembros);
-        }
+                    Text = d.Genero,
+                    Value = d.Id.ToString(),
+                    Selected = false,
+                };
 
-        // GET: Miembros/Eliminar
-        public async Task<IActionResult> Delete(int? id)
+            });
+
+            vm.Roles = itemsroles;
+            vm.Genero = itemsgeneros;
+            miembros.Nombre = vm.Nombre;
+            miembros.Apellido = vm.Apellido;
+            miembros.Edad = vm.Edad;
+            miembros.Direccion = vm.Direccion;
+            miembros.GeneroId = vm.GeneroId;
+            miembros.RolId = vm.RolId;
+            _context.SaveChanges();
+
+
+            TempData["mensaje"] = "Miembro Editado Correctamente";
+            return RedirectToAction("Index");
+
+
+        }
+        [HttpGet]
+        public IActionResult Eliminar(Guid MiembrosId)
         {
-            if (id == null)
+            var miembro = _context.Miembros.Where(w => w.Eliminado == false && w.MiembroId == MiembrosId).ProjectToType<MiembrosVm>().FirstOrDefault();
+
+            return View(miembro);
+        }
+        [HttpPost]
+        public IActionResult Eliminar(MiembrosVm vm)
+        {
+            var miembro = _context.Miembros.Where(w => w.Eliminado == false && w.MiembroId == vm.MiembroId).FirstOrDefault();
+            if (miembro == null)
             {
-                return NotFound();
+                TempData["mensaje"] = "No existe ese Miembro";
+                return View(vm);
             }
 
-            var miembros = await _context.Miembros
-                .FirstOrDefaultAsync(m => m.MiembroId == id);
-            if (miembros == null)
-            {
-                return NotFound();
-            }
 
-            return View(miembros);
-        }
+            miembro.Eliminado = true;
+            _context.SaveChanges();
 
-        // POST: Miembros/Eliminar
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var miembros = await _context.Miembros.FindAsync(id);
-            _context.Miembros.Remove(miembros);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
-        private bool MiembroExists(int id)
-        {
-            return _context.Miembros.Any(e => e.MiembroId == id);
+            TempData["mensaje"] = "Miembro Eliminado Correctamente";
+            return RedirectToAction("Index");
+
+
         }
     }
 }

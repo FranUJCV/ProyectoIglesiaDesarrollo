@@ -10,9 +10,11 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain.Entidades
         public DateTime FechaCreacion { get; set; }
         public Guid UsuarioId { get; set; }
         public ICollection<Usuario> Usuarios { get; set; }
+        public ICollection<Miembros> Miembro { get; set; }
         public ICollection<ModulosRoles> ModulosRoles { get; set; }
         public Rol()
         {
+            Miembro = new HashSet<Miembros>();
             Usuarios = new HashSet<Usuario>();
             ModulosRoles = new HashSet<ModulosRoles>();
         }
