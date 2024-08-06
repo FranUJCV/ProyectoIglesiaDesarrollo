@@ -1,8 +1,29 @@
-﻿
+﻿@model ContribucionesVm
 @{
     ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Editar</h1>
+<div>
+    <form method="post" asp-action="Editar">
+        <input asp-for="Id" type="hidden" />
 
+        <div class="form-group">
+            <label for="MiembroId" class="control-label">Miembro</label>
+            @Html.DropDownList("MiembroId", Model.Miembros, "Seleccione un Miembro", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label asp-for="Cantidad" class="control-label">Cantidad</label>
+            <input asp-for="Cantidad" class="form-control" />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>       
+        
+        <div class="form-group">
+            <label for="MetodoContribucionId" class="control-label">Metodo</label>
+            @Html.DropDownList("MetodoContribucionId", Model.MetodoContribuciones, "Seleccione un Metodo de Contribucion", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Guardar" class="btn-success">
+        </div>
+    </form>
+</div>

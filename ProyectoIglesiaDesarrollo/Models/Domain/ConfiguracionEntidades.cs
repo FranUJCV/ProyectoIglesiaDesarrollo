@@ -111,6 +111,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
 
                 builder.Property(m => m.Edad).HasColumnType("int").HasColumnName("Edad")
                        .IsRequired();
+                builder.HasMany(x => x.Contribucion).WithOne(a => a.Miembro).HasForeignKey(x => x.MiembroId);
             }
         }
         public class GenerosConfig : IEntityTypeConfiguration<Generos>
