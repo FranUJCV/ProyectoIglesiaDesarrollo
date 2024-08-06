@@ -16,6 +16,8 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         public DbSet<Miembros> Miembros { get; set; }
         public DbSet<Generos> Generos { get; set; }
         public DbSet<GrupoServicio> GrupoServicio { get; set; }
+        public DbSet<Contribuciones> Contribuciones { get; set; }
+        public DbSet<MetodoContribucion> MetodoContribucion { get; set; }
 
         public DbSet<Event> Events { get; set; }
 
@@ -30,6 +32,8 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new GenerosConfig());
             modelBuilder.ApplyConfiguration(new GrupoServicioConfig());
             modelBuilder.ApplyConfiguration(new EventConfig());
+            modelBuilder.ApplyConfiguration(new ContribucionesConfig());
+            modelBuilder.ApplyConfiguration(new MetodoContribucionConfig());
         }
     }
 }
