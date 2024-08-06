@@ -1,4 +1,4 @@
-namespace ProyectoIglesiaDesarrollo.Models.Domain.Entidades
+namespace ProyectoIglesiaDesarrollo.Models
 {
     public class MetodoContribucionVm
     {

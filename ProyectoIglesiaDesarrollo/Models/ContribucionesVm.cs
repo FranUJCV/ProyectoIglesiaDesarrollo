@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ProyectoIglesiaDesarrollo.Models.Domain.Entidades;
 
 namespace ProyectoIglesiaDesarrollo.Models
 {
