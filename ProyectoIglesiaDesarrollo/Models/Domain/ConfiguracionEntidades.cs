@@ -159,5 +159,39 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.HasKey(x => x.Id);
             }
         }
+        public class ContribucionesConfig : IEntityTypeConfiguration<Contribuciones>
+        {
+            public void Configure(EntityTypeBuilder<Contribuciones> builder)
+            {
+                builder.HasKey(x => x.Id);
+
+                builder.Property(m => m.Cantidad).HasColumnType("int").HasColumnName("Cantidad")
+                       .IsRequired();
+                
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+            }
+        }
+        public class MetodoContribucionConfig : IEntityTypeConfiguration<MetodoContribucion>
+        {
+            public void Configure(EntityTypeBuilder<MetodoContribucion> builder)
+            {
+                builder.HasKey(x => x.Id);
+
+                builder.Property(m => m.Metodo)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+                builder.HasMany(x => x.Contribucion).WithOne(a => a.MetodoContribucion).HasForeignKey(x => x.MetodoContribucionId);
+            }
+        }
     }
 }
