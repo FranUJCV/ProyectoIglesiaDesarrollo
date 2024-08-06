@@ -15,5 +15,11 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain.Entidades
         public DateTime FechaCreacion { get; set; }
         public Guid RolId { get; set; }
         public Rol Rol { get; set; }
+        public ICollection<Contribuciones> Contribucion { get; set; }
+        public Miembros()
+        {
+            Contribucion = new HashSet<Contribuciones>();
+
+        }
     }
 }
