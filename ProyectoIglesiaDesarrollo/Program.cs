@@ -4,6 +4,7 @@ using ProyectoIglesiaDesarrollo.Models.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMvc();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IglesiaDbContext>

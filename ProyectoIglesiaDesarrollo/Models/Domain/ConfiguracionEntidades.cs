@@ -95,5 +95,13 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.HasKey(x => x.MiembroId);
             }
         }
+
+        public class EventConfig : IEntityTypeConfiguration<Event>
+        {
+            public void Configure(EntityTypeBuilder<Event> builder)
+            {
+                builder.HasKey(x => x.Id);
+            }
+        }
     }
 }

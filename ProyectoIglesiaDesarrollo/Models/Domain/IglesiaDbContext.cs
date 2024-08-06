@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project.Models;
 using ProyectoIglesiaDesarrollo.Models.Domain.Entidades;
 using System.Diagnostics.Metrics;
 using static ProyectoIglesiaDesarrollo.Models.Domain.ConfiguracionEntidades;
@@ -15,6 +16,8 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         public DbSet<ModulosRoles> ModulosRoles { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Miembros> Miembros { get; set; }
+        public DbSet<Event> Events { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +27,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new ModulosRolesConfig());
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
             modelBuilder.ApplyConfiguration(new MiembrosConfig());
+            modelBuilder.ApplyConfiguration(new EventConfig());
         }
     }
 }
