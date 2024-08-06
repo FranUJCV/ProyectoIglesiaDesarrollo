@@ -131,5 +131,25 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.HasMany(x => x.Miembro).WithOne(a => a.Generos).HasForeignKey(x => x.GeneroId);
             }
         }
+        public class GrupoServicioConfig : IEntityTypeConfiguration<GrupoServicio>
+        {
+            public void Configure(EntityTypeBuilder<GrupoServicio> builder)
+            {
+                builder.HasKey(x => x.Id);
+
+                builder.Property(m => m.Nombre)
+                       .IsRequired()
+                       .HasMaxLength(200);
+                builder.Property(m => m.Descripcion)
+                       .IsRequired()
+                       .HasMaxLength(200);
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
+            }
+        }
     }
 }
