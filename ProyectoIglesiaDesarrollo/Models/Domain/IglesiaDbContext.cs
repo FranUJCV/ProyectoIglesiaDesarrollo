@@ -17,6 +17,8 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         public DbSet<Generos> Generos { get; set; }
         public DbSet<GrupoServicio> GrupoServicio { get; set; }
 
+        public DbSet<Event> Events { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AgrupadoModulosConfig());
@@ -27,6 +29,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new MiembrosConfig());
             modelBuilder.ApplyConfiguration(new GenerosConfig());
             modelBuilder.ApplyConfiguration(new GrupoServicioConfig());
+            modelBuilder.ApplyConfiguration(new EventConfig());
         }
     }
 }
