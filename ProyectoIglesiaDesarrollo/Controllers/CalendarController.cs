@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProyectoIglesiaDesarrollo.Models;
 using ProyectoIglesiaDesarrollo.Models.Domain;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 
 namespace ProyectoIglesiaDesarrollo.Controllers
@@ -16,13 +17,11 @@ namespace ProyectoIglesiaDesarrollo.Controllers
             _context = context;
         }
 
-        // Método para cargar la vista principal del calendario
         public IActionResult Index()
         {
             return View();
         }
 
-        // Método para obtener los eventos en formato JSON
         [HttpGet]
         public async Task<IActionResult> GetEvents()
         {
@@ -31,8 +30,10 @@ namespace ProyectoIglesiaDesarrollo.Controllers
                 id = e.Id,
                 title = e.Title,
                 description = e.Description,
-                start = e.Start.ToString("yyyy-MM-dd"),
-                end = e.End.ToString("yyyy-MM-dd")
+                allDay = e.AllDay,
+                color = e.Color,
+                start = e.Start.ToString("yyyy-MM-ddTHH:mm:ss"),
+                end = e.End.ToString("yyyy-MM-ddTHH:mm:ss")
             }).ToListAsync();
 
             return new JsonResult(events);
