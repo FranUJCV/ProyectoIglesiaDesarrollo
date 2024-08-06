@@ -16,8 +16,13 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         public DbSet<ModulosRoles> ModulosRoles { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Miembros> Miembros { get; set; }
-        public DbSet<Event> Events { get; set; }
+<<<<<<< HEAD
         
+        
+=======
+        public DbSet<Generos> Generos { get; set; }
+        public DbSet<GrupoServicio> GrupoServicio { get; set; }
+>>>>>>> 8478d545d491c2edcdbc91c24420b334f0017316
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +32,12 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new ModulosRolesConfig());
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
             modelBuilder.ApplyConfiguration(new MiembrosConfig());
-            modelBuilder.ApplyConfiguration(new EventConfig());
+<<<<<<< HEAD
+            
+=======
+            modelBuilder.ApplyConfiguration(new GenerosConfig());
+            modelBuilder.ApplyConfiguration(new GrupoServicioConfig());
+>>>>>>> 8478d545d491c2edcdbc91c24420b334f0017316
         }
     }
 }
