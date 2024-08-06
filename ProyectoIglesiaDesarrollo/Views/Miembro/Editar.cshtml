@@ -1,0 +1,43 @@
+﻿@model MiembrosVm
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post" asp-action="Editar">
+        <input asp-for="MiembroId" type="hidden" />
+        <div class="form-group">
+            <label asp-for="Nombre" class="control-label">Nombre</label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Apellido" class="control-label">Apellido</label>
+            <input asp-for="Apellido" class="form-control" />
+            <span asp-validation-for="Apellido" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Edad" class="control-label">Edad</label>
+            <input asp-for="Edad" class="form-control" />
+            <span asp-validation-for="Edad" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Direccion" class="control-label">Direccion</label>
+            <input asp-for="Direccion" class="form-control" />
+            <span asp-validation-for="Direccion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="GeneroId" class="control-label">Genero</label>
+            @Html.DropDownList("GeneroId", Model.Genero, "Seleccione un Genero", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="RolId" class="control-label">Rol</label>
+            @Html.DropDownList("RolId", Model.Roles, "Seleccione un Rol", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Guardar" class="btn-success">
+        </div>
+    </form>
+</div>
+

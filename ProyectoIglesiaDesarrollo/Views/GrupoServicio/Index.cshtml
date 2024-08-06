@@ -1,9 +1,8 @@
-﻿@model List<MiembrosVm>
+﻿@model List<GrupoServicioVm>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <form asp-action="Insertar" method="get">
     <div class="row">
         <div class="danger">
@@ -28,11 +27,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Edad</th>
-                        <th>Genero</th>
-                        <th>Direccion</th>
-                        <th>Rol</th>
+                        <th>Descripcion</th>
 
                     </tr>
                 </thead>
@@ -41,14 +36,10 @@
                     {
                         <tr>
                             <td>@item.Nombre</td>
-                            <td>@item.Apellido</td>
-                            <td>@item.Edad</td>
-                            <td>@item.Generos.Genero</td>
-                            <td>@item.Direccion</td>
-                            <td>@item.Rol.Descripcion</td>
+                            <td>@item.Descripcion</td>
                             <td>
-                                @Html.ActionLink("Editar", "Editar", "Miembro", new { @MiembroId = item.MiembroId }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Eliminar", "Eliminar", "Miembro", new { @MiembroId = item.MiembroId }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Editar", "Editar", "GrupoServicio", new { @GrupoServicioId = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Eliminar", "Eliminar", "GrupoServicio", new { @GrupoServicioId = item.Id }, new { @class = "btn btn-info" })
                             </td>
                         </tr>
                     }
@@ -59,6 +50,7 @@
     }
     else
     {
-        <p>No hay Miembros </p>
+        <p>No hay Grupos </p>
     }
 </form>
+
