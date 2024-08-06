@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project.Models;
 using ProyectoIglesiaDesarrollo.Models.Domain.Entidades;
-using System.Diagnostics.Metrics;
 using static ProyectoIglesiaDesarrollo.Models.Domain.ConfiguracionEntidades;
 
 namespace ProyectoIglesiaDesarrollo.Models.Domain
@@ -17,8 +15,13 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Miembros> Miembros { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         
+=======
+        public DbSet<Generos> Generos { get; set; }
+        public DbSet<GrupoServicio> GrupoServicio { get; set; }
+>>>>>>> 8478d545d491c2edcdbc91c24420b334f0017316
 =======
         public DbSet<Generos> Generos { get; set; }
         public DbSet<GrupoServicio> GrupoServicio { get; set; }
@@ -33,7 +36,12 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
             modelBuilder.ApplyConfiguration(new MiembrosConfig());
 <<<<<<< HEAD
+<<<<<<< HEAD
             
+=======
+            modelBuilder.ApplyConfiguration(new GenerosConfig());
+            modelBuilder.ApplyConfiguration(new GrupoServicioConfig());
+>>>>>>> 8478d545d491c2edcdbc91c24420b334f0017316
 =======
             modelBuilder.ApplyConfiguration(new GenerosConfig());
             modelBuilder.ApplyConfiguration(new GrupoServicioConfig());
