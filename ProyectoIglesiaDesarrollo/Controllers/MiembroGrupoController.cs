@@ -175,7 +175,7 @@ namespace ProyectoIglesiaDesarrollo.Controllers
             var miembrogruposervicio = _context.MiembroGrupo.Where(w => w.Eliminado == false && w.Id == vm.Id).FirstOrDefault();
             if (miembrogruposervicio == null)
             {
-                TempData["mensaje"] = "No existe ese Genero";
+                TempData["mensaje"] = "No existe ese Miembro en Ese Grupo";
                 return View(vm);
             }
 
