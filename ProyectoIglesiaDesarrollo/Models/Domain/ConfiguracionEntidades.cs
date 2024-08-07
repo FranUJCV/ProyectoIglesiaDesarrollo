@@ -112,6 +112,7 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.Property(m => m.Edad).HasColumnType("int").HasColumnName("Edad")
                        .IsRequired();
                 builder.HasMany(x => x.Contribucion).WithOne(a => a.Miembro).HasForeignKey(x => x.MiembroId);
+                builder.HasMany(x => x.MiembroGrupo).WithOne(a => a.Miembro).HasForeignKey(x => x.MiembroId);
             }
         }
         public class GenerosConfig : IEntityTypeConfiguration<Generos>
@@ -150,6 +151,8 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
 
                 builder.Property(m => m.FechaCreacion)
                        .IsRequired();
+                builder.HasMany(x => x.MiembroGrupo).WithOne(a => a.GrupoServicio).HasForeignKey(x => x.GrupoServicioId);
+
             }
         }
 
@@ -192,6 +195,19 @@ namespace ProyectoIglesiaDesarrollo.Models.Domain
                 builder.Property(m => m.FechaCreacion)
                        .IsRequired();
                 builder.HasMany(x => x.Contribucion).WithOne(a => a.MetodoContribucion).HasForeignKey(x => x.MetodoContribucionId);
+            }
+        }
+        public class MiembroGrupoConfig : IEntityTypeConfiguration<MiembroGrupo>
+        {
+            public void Configure(EntityTypeBuilder<MiembroGrupo> builder)
+            {
+                builder.HasKey(x => x.Id);             
+
+                builder.Property(m => m.Eliminado)
+                       .IsRequired();
+
+                builder.Property(m => m.FechaCreacion)
+                       .IsRequired();
             }
         }
     }
