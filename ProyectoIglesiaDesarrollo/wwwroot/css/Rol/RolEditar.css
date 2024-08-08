@@ -1,9 +1,10 @@
 /* General styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #1c1c1c;
     margin: 0;
     padding: 20px;
+    color: #e0e0e0;
 }
 
 .container {
@@ -13,16 +14,16 @@ body {
 
 h1 {
     text-align: center;
-    color: #343a40;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
 /* Form styles */
 form {
-    background: #ffffff;
+    background: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .form-group {
@@ -31,7 +32,7 @@ form {
 
 .control-label {
     font-weight: bold;
-    color: #495057;
+    color: #e0e0e0;
     margin-bottom: 10px;
     display: block;
 }
@@ -40,14 +41,16 @@ form {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ced4da;
+    border: 1px solid #444;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
     transition: border-color 0.3s;
 }
 
     .form-control:focus {
-        border-color: #80bdff;
+        border-color: #ff7f00;
         outline: none;
     }
 
@@ -60,23 +63,25 @@ form {
 
 /* Dropdown styles */
 .form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #2e2e2e;
     opacity: 1;
+    color: #b0b0b0;
 }
 
 /* Button styles */
 .btn-success {
-    background-color: #28a745;
+    background-color: #ff7f00;
     border: none;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
     .btn-success:hover {
-        background-color: #218838;
+        background-color: #e67300;
     }
 
 /* Container for better centering */

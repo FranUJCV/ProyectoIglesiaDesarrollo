@@ -1,9 +1,10 @@
 /* General styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #1c1c1c;
     margin: 0;
     padding: 20px;
+    color: #e0e0e0;
 }
 
 .container {
@@ -13,16 +14,16 @@ body {
 
 h1 {
     text-align: center;
-    color: #343a40;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
 /* Form styles */
 form {
-    background: #ffffff;
+    background: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .danger .alert {
@@ -30,17 +31,18 @@ form {
 }
 
 .btn-success {
-    background-color: #28a745;
+    background-color: #ff7f00;
     border: none;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
     .btn-success:hover {
-        background-color: #218838;
+        background-color: #e67300;
     }
 
 /* Table styles */
@@ -52,17 +54,18 @@ form {
 
     .table th, .table td {
         padding: 12px 15px;
-        border: 1px solid #dee2e6;
+        border: 1px solid #444;
         text-align: left;
+        color: #e0e0e0;
     }
 
     .table th {
-        background-color: #007bff;
+        background-color: #ff7f00;
         color: white;
     }
 
     .table tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #2e2e2e;
     }
 
 /* Scrollable table */
@@ -72,25 +75,26 @@ form {
 }
 
 .table .btn-info {
-    background-color: #17a2b8;
+    background-color: #ff7f00;
     border: none;
-    color: #fff;
+    color: #ffffff;
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 14px;
     margin-right: 5px;
+    transition: background-color 0.3s ease;
 }
 
     .table .btn-info:hover {
-        background-color: #138496;
+        background-color: #e67300;
     }
 
 /* Alert styles */
 .alert {
     padding: 15px;
-    background-color: #f1c40f;
-    color: #856404;
+    background-color: #ff9800;
+    color: #ffffff;
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -100,16 +104,17 @@ form {
         border: none;
         font-size: 20px;
         cursor: pointer;
+        color: #ffffff;
     }
 
         .alert .close:hover {
-            color: #000;
+            color: #f2f2f2;
         }
 
 /* No roles message */
 p {
     font-size: 18px;
-    color: #6c757d;
+    color: #cccccc;
     text-align: center;
     margin-top: 20px;
 }
