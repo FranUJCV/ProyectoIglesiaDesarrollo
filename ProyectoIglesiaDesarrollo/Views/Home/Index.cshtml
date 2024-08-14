@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<script>
+<style>
 
     /* General styles */
 body {
@@ -10,10 +10,14 @@ body {
     margin: 0;
     padding: 20px;
     color: #e0e0e0;
+        background: #232526;  /* fallback for old browsers */
+        background: -webkit - linear - gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear - gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -63,6 +67,7 @@ form {
         text-align: left;
         color: #e0e0e0;
     }
+    </style>
 
 <div class="hero-section" style="background-color: #000000; background-image: url('https://example.com/your-background-image.jpg'); background-size: cover; background-position: center; padding: 100px 20px; color: white; text-align: center;">
     <h1 class="display-3" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Bienvenidos a la Iglesia La Guadalupe</h1>
