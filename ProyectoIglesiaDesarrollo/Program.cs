@@ -37,7 +37,7 @@ app.UseAuthorization();
 app.UseSession();
 
 // Use CoreAdmin and set custom URL
-app.UseCoreAdminCustomUrl("admin");
+app.UseCoreAdminCustomUrl("CoreAdministrator");
 
 app.MapControllerRoute(
     name: "default",

@@ -18,6 +18,99 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
     <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            
+        }
+        /* Fondo oscuro para la barra de navegación */
+        .navbar {
+            background: linear-gradient(135deg, rgba(33,32,33,1) 0%, rgba(80,80,80,1) 65%, rgba(23,23,23,1) 100%) !important;
+        }
+
+            /* Estilo para los elementos del menú principal */
+            .navbar .nav-link {
+                color: #ffffff !important;
+                font-weight: 500;
+            }
+
+                .navbar .nav-link:hover {
+                    color: #ff9800 !important; /* Naranja */
+                }
+
+        /* Botón de la barra de navegación (para pantallas pequeñas) */
+        .navbar-toggler {
+            border-color: #ff9800 !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 152, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+        }
+
+        /* Dropdown menu styling */
+        .dropdown-menu {
+            background-color: #2c2c2c !important;
+            border-color: #3e3e3e !important;
+        }
+
+        .dropdown-item {
+            color: #ffffff !important;
+        }
+
+            .dropdown-item:hover {
+                background-color: #ff9800 !important; /* Naranja */
+                color: #ffffff !important;
+            }
+
+        /* Estilo para el título del dropdown */
+        #navbarDropdown {
+            color: #ffffff !important;
+        }
+
+            #navbarDropdown:hover {
+                color: #ff9800 !important;
+            }
+
+        /* Footer oscuro */
+        .footer {
+            background-color: #1c1c1c !important;
+            color: #bdbdbd !important;
+        }
+
+            /* Links en el footer */
+            .footer a {
+                color: #ff9800 !important;
+            }
+
+                .footer a:hover {
+                    color: #ffffff !important;
+                }
+
+        /* Para mejorar la visibilidad de los botones */
+        .btn {
+            background-color: #ff9800 !important;
+            color: #ffffff !important;
+            border: none !important;
+        }
+
+            .btn:hover {
+                background-color: #ff6f00 !important;
+                color: #ffffff !important;
+            }
+
+        /* Añadir un poco de padding al contenido principal */
+        .main-content {
+            padding: 20px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+
+
+    </style>
 
 </head>
 <body>
